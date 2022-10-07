@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Hello from './Hello';
 import './style.css';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: 'React'
-    };
-  }
+function App() {
 
-  render() {
-    return (
-      <div>
-        <Hello />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Hello />
+    </div>
+  );
 }
 
-render(<App />, document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container); 
+root.render(<App tab="home" />);
