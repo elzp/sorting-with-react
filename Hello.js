@@ -10,12 +10,12 @@ export default function () {
   function sortByTime(thisdata, type) {
     let newData = [...thisdata];
     switch (type) {
-      case 'toBig':
+      case true: //tobig
         newData.sort((a, b) => {
           return a.time - b.time;
         });
         break;
-      case 'toSmall':
+      case false: //tosmall
         newData.sort((a, b) => {
           return b.time - a.time;
         });
@@ -32,17 +32,30 @@ export default function () {
   const mofifiedData = sortByTime(previousdata);
 
   const [data, changeData] = useState(mofifiedData);
-  console.log(data);
+  const [direction, changeDirection] = useState(true);
+
+  let icon = direction ? (
+    <i class="fas fa-caret-down"></i>
+  ) : (
+    <i class="fa fa-caret-up"></i>
+  );
   return (
     <table class="table-auto bg-white rounded-md overflow-hidden shadow-xl">
       <thead>
         <tr>
           <th class="px-4 py-2">Moduł</th>
           <th class="px-4 py-2">Autor</th>
-          <th class="px-4 py-2">
+          <th
+            class="px-4 py-2"
+            onClick={() => {
+              changeDirection((prev) => !prev);
+              changeData(sortByTime(data, direction));
+            }}
+          >
             <a class="hover:text-orange-600" href="#">
-              <i class="fas fa-caret-down"></i>
+              {icon}
               Czas trwania
+              {JSON.stringifydirection}
             </a>
           </th>
         </tr>
@@ -51,21 +64,6 @@ export default function () {
         {data.map((item) => {
           return <Row item={item} key={item.time} />;
         })}
-        {/* <tr>
-          <td class="border px-4 py-2">Fundamenty języka JavaScript</td>
-          <td class="border px-4 py-2">Adam</td>
-          <td class="border px-4 py-2">10129</td>
-        </tr>
-        <tr class="bg-gray-100">
-          <td class="border px-4 py-2">Przeglądarka bez tajemnic</td>
-          <td class="border px-4 py-2">Przemek</td>
-          <td class="border px-4 py-2">19393</td>
-        </tr>
-        <tr>
-          <td class="border px-4 py-2">W świecie frameworków</td>
-          <td class="border px-4 py-2">Marcin</td>
-          <td class="border px-4 py-2">14002</td>
-        </tr> */}
       </tbody>
     </table>
   );
