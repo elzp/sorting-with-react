@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Row from './Row';
 export default function () {
   let data = [
     { subject: 'Fundamenty języka JavaScript', name: 'Adam', time: 10129 },
@@ -20,7 +20,8 @@ export default function () {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <Row />
+        {/* <tr>
           <td class="border px-4 py-2">Fundamenty języka JavaScript</td>
           <td class="border px-4 py-2">Adam</td>
           <td class="border px-4 py-2">10129</td>
@@ -34,7 +35,7 @@ export default function () {
           <td class="border px-4 py-2">W świecie frameworków</td>
           <td class="border px-4 py-2">Marcin</td>
           <td class="border px-4 py-2">14002</td>
-        </tr>
+        </tr> */}
       </tbody>
     </table>
   );
