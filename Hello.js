@@ -20,7 +20,13 @@ export default function () {
         </tr>
       </thead>
       <tbody>
-        <Row />
+        {data.map((item)=>{
+
+          return (
+            <Row item={item}/>
+          )
+        })
+        }
         {/* <tr>
           <td class="border px-4 py-2">Fundamenty języka JavaScript</td>
           <td class="border px-4 py-2">Adam</td>

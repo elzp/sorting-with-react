@@ -1,15 +1,15 @@
 import React from 'react';
 
-export default function Row() {
+export default function Row(props) {
+  const { subject, name, time } = props.item;
 
-
-return (
-  <>
-  <tr>
-          <td class="border px-4 py-2">Fundamenty języka JavaScript</td>
-          <td class="border px-4 py-2">Adam</td>
-          <td class="border px-4 py-2">10129</td>
-        </tr>
-  </>
-);
+  return (
+    <>
+      <tr>
+        <td class="border px-4 py-2">{subject}</td>
+        <td class="border px-4 py-2">{name}</td>
+        <td class="border px-4 py-2">{time}</td>
+      </tr>
+    </>
+  );
 }
